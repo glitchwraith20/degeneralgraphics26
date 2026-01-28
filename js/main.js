@@ -17,42 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
-
-  // 🚨 Guard clause
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value
-    };
-
-    try {
-      const res = await fetch("YOUR_ENDPOINT_URL", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-
-      if (res.ok) {
-        alert("Message sent successfully 🚀");
-        form.reset();
-      } else {
-        alert("Submission failed. Try again.");
-      }
-    } catch (error) {
-      alert("Network error. Please try later.");
-    }
-  });
-});
-
 (function () {
   emailjs.init("d7Pi9hCT0Q9L52bGW");
 })();
@@ -74,4 +38,31 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
       console.error(error);
     }
   );
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  emailjs.init("d7Pi9hCT0Q9L52bGW");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_r28flh1",
+      "template_j1pr65e",
+      this
+    ).then(
+      () => {
+        alert("Message sent successfully!");
+        form.reset();
+      },
+      (error) => {
+        alert("Submission failed. Please try again.");
+        console.error("EmailJS error:", error);
+      }
+    );
+  });
 });
