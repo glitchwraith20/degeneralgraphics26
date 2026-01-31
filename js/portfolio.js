@@ -1,5 +1,5 @@
 const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("Lightbox-img");
+const lightboxImg = document.getElementById("lightbox-img");
 
 document.querySelectorAll(".image-item img").forEach(img => {
     img.addEventListener("click", () => {
@@ -10,4 +10,5 @@ document.querySelectorAll(".image-item img").forEach(img => {
 
 lightbox.addEventListener("click", () => {
     lightbox.style.display = "none";
+    lightboxImg.src = "";
 });
