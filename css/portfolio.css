@@ -21,56 +21,172 @@
 }
 
 /* ===============================
-    Portfolio Grid
-=============================== */
-.portfolio-page {
-    padding: 5rem 0;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1frr));
-    gap: 2rem;
-}
-
-.portfolio-card {
-    background-color: #1c1c1c;
-    border-radius: 14px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-card:hover {
-    transform: translateY(-8px);
-}
-
-.portfolio-card img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-}
-
-.portfolio-info {
-    padding: 1.2rem;
-}
-
-.portfolio-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-}
-
-.portfolio-info span {
-    font-size: 0.85rem;
-    color: var(--accent-color);
-}
-
-/* ===============================
     Responsive
 =============================== */
 @media (max-width: 768px) {
     .portfolio-card img {
         height: 220px;
+    }
+}
+
+
+/* ===============================
+   Portfolio Catalog Sections
+=============================== */
+
+.portfolio-catalog {
+    padding: 5rem 0;
+}
+
+.portfolio-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.portfolio-section.reverse {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.portfolio-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.portfolio-text p {
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+.portfolio-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.portfolio-preview img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-preview img:hover {
+    transform: scale(1.05);
+}
+
+/* ===============================
+   Responsive
+=============================== */
+
+@media (max-width: 768px) {
+    .portfolio-section,
+    .portfolio-section.reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-preview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-preview img {
+        height: 180px;
+    }
+}
+
+/* ===============================
+   Portfolio Image Grid
+=============================== */
+.portfolio-gallery {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url('../assets/images/hero.jpeg');
+
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 0;
+}
+
+.gallery-header {
+    max-width: 620px;
+    margin-bottom: 2.2rem;
+}
+
+.gallery-header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.gallery-header p {
+    color: #9ca3af;
+}
+
+/* ===============================
+    Masonry layout
+=============================== */
+.image-grid {
+    columns: 4 200px;
+    column-gap: 1.5rem;
+}
+
+.image-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    cursor: zoom-in;
+}
+
+.image-item img {
+    width: 100%;
+    border-radius: 14px;
+    transition: transform 0.25s ease;
+}
+
+.image-item:hover img {
+    transform: scale(1.02);
+}
+
+.image-item figcaption {
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    color: #9ca3af;
+}
+
+/* ===============================
+   Lightbox (Preview)
+=============================== */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 14px;
+    cursor: zoom-out;
+}
+
+/* ===============================
+   Responsive
+=============================== */
+@media (max-width: 768px) {
+    .image-grid {
+        columns: 2 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-grid {
+        columns: 1;
     }
 }
